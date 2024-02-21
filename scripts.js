@@ -21,7 +21,7 @@ let operation = function () {
     let operator;
     // pulls variables from html buttons
 
-    return, operand, operand2, operator;
+    return operand, operand2, operator;
 
 }
 
