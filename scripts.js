@@ -28,7 +28,7 @@ function operate(operator, operator2, operand) {
     } else if (operand === "-") {
         const result = subtract(operator, operator2);
     } else if (operand === "*") {
-        const result = multiple(operator, operator2);
+        const result = multiply(operator, operator2);
     } else {
         const result = divide(operator, operator2);
     }
