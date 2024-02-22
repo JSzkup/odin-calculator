@@ -33,4 +33,12 @@ function operate(operator, operator2, operand) {
         const result = divide(operator, operator2);
     }
 
+    return result;
+}
+
+function updateDisplay(inputtedValue) {
+    let displayInputBox = document.getElementById("display");
+    let currentShownDisplay = displayInputBox.value;
+
+    displayInputBox.value = currentShownDisplay + inputtedValue;
 }
