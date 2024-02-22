@@ -36,6 +36,10 @@ function operate(operator, operator2, operand) {
     return result;
 }
 
+function clearDisplay() {
+    document.getElementById("display").value = "";
+}
+
 function updateDisplay(inputtedValue) {
     let displayInputBox = document.getElementById("display");
     let currentShownDisplay = displayInputBox.value;
