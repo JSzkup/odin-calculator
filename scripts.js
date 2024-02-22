@@ -37,6 +37,7 @@ function operate(operator, operator2, operand) {
 }
 
 function clearDisplay() {
+    // clears display value
     document.getElementById("display").value = "";
 }
 
@@ -44,5 +45,8 @@ function updateDisplay(inputtedValue) {
     let displayInputBox = document.getElementById("display");
     let currentShownDisplay = displayInputBox.value;
 
+    // updates the display value by adding to the current value
     displayInputBox.value = currentShownDisplay + inputtedValue;
+
+    return displayInputBox.value
 }
