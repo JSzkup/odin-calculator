@@ -41,6 +41,24 @@ function clearDisplay() {
     document.getElementById("display").value = "";
 }
 
+function inputHandling() {
+    const buttons = document.querySelectorAll("#numpad");
+
+    // add an event listener to update the display on a click on all buttons
+    buttons.forEach(button => {
+        button.addEventListener('click', () => {
+            if (button.value == "Clear") {
+                // clear display if "C" is clicked
+                clearDisplay();
+            } else {
+                updateDisplay(button.value);
+            }
+        });
+
+    });
+}
+
+// TODO change this to addEventListener("click")
 function updateDisplay(inputtedValue) {
     let displayInputBox = document.getElementById("display");
     let currentShownDisplay = displayInputBox.value;
@@ -50,3 +68,7 @@ function updateDisplay(inputtedValue) {
 
     return displayInputBox.value
 }
+
+// necessary for addEventListener input to work on page load
+window.addEventListener('load', inputHandling);
+
