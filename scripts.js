@@ -15,12 +15,13 @@ const divide = function (a, b) {
 }
 
 function pullApartEquation(equations) {
-    // TODO what is equations at this point, should it be converted to string?
-    // TODO needs to keep the operators in the array
+    console.log(`OG Equation: ${equations}`)
 
     // split() equation by operand
-    let splitEquationArray = String(equations).split(/[\+|-|\*|\/]/);
+    let splitEquationArray = String(equations).split(/([\+|\-|\*|\/])/);
     console.log(splitEquationArray);
+
+    return splitEquationArray;
 
     // perform math operations one by one with operate()
 
