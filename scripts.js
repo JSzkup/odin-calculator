@@ -14,12 +14,16 @@ const divide = function (a, b) {
     return a / b;
 }
 
-let setOperationVariables = function () {
-    let operand;
-    let operand2;
-    let operator;
+function pullApartEquation(equations) {
+    // TODO what is equations at this point, should it be converted to string?
+    // TODO needs to keep the operators in the array
 
-    return operand, operand2, operator;
+    // split() equation by operand
+    let splitEquationArray = String(equations).split(/[\+|-|\*|\/]/);
+    console.log(splitEquationArray);
+
+    // perform math operations one by one with operate()
+
 }
 
 function operate(operator, operator2, operand) {
@@ -50,6 +54,13 @@ function inputHandling() {
             if (button.value == "Clear") {
                 // clear display if "C" is clicked
                 clearDisplay();
+            } else if (button.value == "Equal") {
+                // separate parts of equation and compute on =
+
+                // gets the current value of the display
+                const currentValue = updateDisplay();
+
+                pullApartEquation(currentValue);
             } else {
                 updateDisplay(button.value);
             }
@@ -58,15 +69,21 @@ function inputHandling() {
     });
 }
 
-// TODO change this to addEventListener("click")
-function updateDisplay(inputtedValue) {
+let updateDisplay = function (inputtedValue) {
+    // TODO optional argument for if inputted value is the solution or an Error to clear display before updating it with a new value
+
     let displayInputBox = document.getElementById("display");
     let currentShownDisplay = displayInputBox.value;
+
+    // used to pull the current value of the display when called with no arguments
+    if (inputtedValue === undefined) {
+        return displayInputBox.value;
+    }
 
     // updates the display value by adding to the current value
     displayInputBox.value = currentShownDisplay + inputtedValue;
 
-    return displayInputBox.value
+    return displayInputBox.value;
 }
 
 // necessary for addEventListener input to work on page load
