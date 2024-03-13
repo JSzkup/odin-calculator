@@ -15,30 +15,81 @@ const divide = function (a, b) {
 }
 
 function pullApartEquation(equations) {
-    console.log(`OG Equation: ${equations}`)
+    // console.log(`OG Equation: ${equations}`)
 
-    // split() equation by operand
+    // split() equation by operators, keeping operators
     let splitEquationArray = String(equations).split(/([\+|\-|\*|\/])/);
-    console.log(splitEquationArray);
 
     return splitEquationArray;
-
-    // perform math operations one by one with operate()
 
 }
 
 function operate(operator, operator2, operand) {
     if (operand === "+") {
         const result = add(operator, operator2);
+        return result;
+
     } else if (operand === "-") {
         const result = subtract(operator, operator2);
+        return result;
+
     } else if (operand === "*") {
         const result = multiply(operator, operator2);
+        return result;
+
     } else {
         const result = divide(operator, operator2);
+        return result;
+
     }
 
-    return result;
+}
+
+function pemdas(equation) {
+    // Parenthesis - Exponents - Multiplication - Division - Addition - Addition - Subtraction
+
+    // splits equation into an array
+    let splitEquationArray = pullApartEquation(equation);
+
+    splitEquationArray = splitEquationArray.map(s => Number(s) || s);
+    console.log(splitEquationArray);
+
+
+    //  TODO rework into reduce function
+
+    for (let i = 0; i < splitEquationArray.length; i++) {
+
+        // if I is ( capture the next 3 elements and find solution
+        if (splitEquationArray[i] == "(") {
+            let result = operate(splitEquationArray[i + 1], splitEquationArray[i + 3], splitEquationArray[i + 2]);
+
+            equation.splice(i, 5, result);
+        } else if (splitEquationArray[i] == "*") {
+            // If I is */+- capture the 2 numbers around array[i-1] and array[i+1], multiple can be in a loop
+            let result = operate(splitEquationArray[i - 1], splitEquationArray[i + 1], splitEquationArray[i]);
+
+            // right after a number is found replace the numbers with the solution
+            splitEquationArray.splice(i - 1, 3, result);
+
+        } else if (splitEquationArray[i] == "/") {
+            let result = operate(splitEquationArray[i - 1], splitEquationArray[i + 1], splitEquationArray[i]);
+
+            splitEquationArray.splice(i - 1, 3, result);
+
+        } else if (splitEquationArray[i] == "+") {
+            let result = operate(splitEquationArray[i - 1], splitEquationArray[i + 1], splitEquationArray[i]);
+
+            splitEquationArray.splice(i - 1, 3, result);
+
+        } else if (splitEquationArray[i] == "-") {
+            let result = operate(splitEquationArray[i - 1], splitEquationArray[i + 1], splitEquationArray[i]);
+
+            splitEquationArray.splice(i - 1, 3, result);
+        }
+
+    }
+
+    updateDisplay(splitEquationArray);
 }
 
 function clearDisplay() {
@@ -61,7 +112,7 @@ function inputHandling() {
                 // gets the current value of the display
                 const currentValue = updateDisplay();
 
-                pullApartEquation(currentValue);
+                pemdas(currentValue);
             } else {
                 updateDisplay(button.value);
             }
