@@ -81,7 +81,7 @@ function pemdas(equation) {
 
     }
 
-    updateDisplay(splitEquationArray);
+    updateDisplay(splitEquationArray, true);
 }
 
 function clearDisplay() {
@@ -113,10 +113,16 @@ function inputHandling() {
     });
 }
 
-let updateDisplay = function (inputtedValue) {
+let updateDisplay = function (inputtedValue, answer) {
     // TODO optional argument for if inputted value is the solution or an Error to clear display before updating it with a new value
 
     let displayInputBox = document.getElementById("display");
+
+    // clears the display if the answer is being displyed to the screen
+    if (answer) {
+        clearDisplay();
+    }
+
     let currentShownDisplay = displayInputBox.value;
 
     // used to pull the current value of the display when called with no arguments
