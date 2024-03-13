@@ -26,21 +26,13 @@ function pullApartEquation(equations) {
 
 function operate(operator, operator2, operand) {
     if (operand === "+") {
-        const result = add(operator, operator2);
-        return result;
-
+        return add(operator, operator2);
     } else if (operand === "-") {
-        const result = subtract(operator, operator2);
-        return result;
-
+        return subtract(operator, operator2);
     } else if (operand === "*") {
-        const result = multiply(operator, operator2);
-        return result;
-
+        return multiply(operator, operator2);
     } else {
-        const result = divide(operator, operator2);
-        return result;
-
+        return divide(operator, operator2);
     }
 
 }
