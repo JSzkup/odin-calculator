@@ -15,9 +15,7 @@ const divide = function (a, b) {
 }
 
 function pullApartEquation(equations) {
-    // console.log(`OG Equation: ${equations}`)
-
-    // split() equation by operators, keeping operators
+    // split() equation by operators, while also keeping operators
     let splitEquationArray = String(equations).split(/([\+|\-|\*|\/])/);
 
     return splitEquationArray;
@@ -40,22 +38,24 @@ function operate(operator, operator2, operand) {
 function pemdas(equation) {
     // Parenthesis - Exponents - Multiplication - Division - Addition - Addition - Subtraction
 
-    // splits equation into an array
+    // splits equation into an array of separate numbers/operators
     let splitEquationArray = pullApartEquation(equation);
 
-    splitEquationArray = splitEquationArray.map(s => Number(s) || s);
+    // turns all the numbers into integers while keeping the operators strings
+    splitEquationArray = splitEquationArray.map(i => Number(i) || i);
     console.log(splitEquationArray);
 
+    let i = 0;
 
-    //  TODO rework into reduce function
-
-    for (let i = 0; i < splitEquationArray.length; i++) {
+    while (splitEquationArray.length > 1) {
 
         // if I is ( capture the next 3 elements and find solution
         if (splitEquationArray[i] == "(") {
             let result = operate(splitEquationArray[i + 1], splitEquationArray[i + 3], splitEquationArray[i + 2]);
 
             equation.splice(i, 5, result);
+            --i;
+
         } else if (splitEquationArray[i] == "*") {
             // If I is */+- capture the 2 numbers around array[i-1] and array[i+1], multiple can be in a loop
             let result = operate(splitEquationArray[i - 1], splitEquationArray[i + 1], splitEquationArray[i]);
@@ -63,22 +63,31 @@ function pemdas(equation) {
             // right after a number is found replace the numbers with the solution
             splitEquationArray.splice(i - 1, 3, result);
 
+            // backs up iterator to reach the new location after shrinking array
+            --i;
+
         } else if (splitEquationArray[i] == "/") {
             let result = operate(splitEquationArray[i - 1], splitEquationArray[i + 1], splitEquationArray[i]);
 
             splitEquationArray.splice(i - 1, 3, result);
+            --i;
 
         } else if (splitEquationArray[i] == "+") {
             let result = operate(splitEquationArray[i - 1], splitEquationArray[i + 1], splitEquationArray[i]);
 
             splitEquationArray.splice(i - 1, 3, result);
+            --i;
 
         } else if (splitEquationArray[i] == "-") {
             let result = operate(splitEquationArray[i - 1], splitEquationArray[i + 1], splitEquationArray[i]);
 
             splitEquationArray.splice(i - 1, 3, result);
+            --i;
         }
 
+        console.log(splitEquationArray);
+
+        ++i;
     }
 
     updateDisplay(splitEquationArray, true);
@@ -114,11 +123,9 @@ function inputHandling() {
 }
 
 let updateDisplay = function (inputtedValue, answer) {
-    // TODO optional argument for if inputted value is the solution or an Error to clear display before updating it with a new value
-
     let displayInputBox = document.getElementById("display");
 
-    // clears the display if the answer is being displyed to the screen
+    // clears the display if the answer is being displayed to the screen
     if (answer) {
         clearDisplay();
     }
