@@ -11,6 +11,9 @@ const multiply = function (a, b) {
 }
 
 const divide = function (a, b) {
+    if (b == 0) {
+        return updateDisplay("CAN'T DIVIDE BY ZERO", true)
+    }
     return a / b;
 }
 
@@ -46,6 +49,8 @@ function pemdas(equation) {
     console.log(splitEquationArray);
 
     let i = 0;
+
+    //  TODO change functionality to update display as numbers are entered like the requirements asks for
 
     while (splitEquationArray.length > 1) {
 
@@ -128,6 +133,14 @@ let updateDisplay = function (inputtedValue, answer) {
     // clears the display if the answer is being displayed to the screen
     if (answer) {
         clearDisplay();
+
+        // checks if answer is a number for rounding
+        if (!isNaN) {
+            //  rounds answer 2 decimals 
+            inputtedValue = Math.round(inputtedValue * 100) / 100;
+
+        }
+
     }
 
     let currentShownDisplay = displayInputBox.value;
