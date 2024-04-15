@@ -1,0 +1,27 @@
+html {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+body {
+    border: 5px solid;
+    margin: 10%;
+
+    width: 350px;
+    height: 450px;
+
+    display: flex;
+    flex-direction: column;
+
+}
+
+#display {
+    height: 50px;
+    margin: 5px;
+}
+
+#input-btns {
+    flex: 1;
+
+}

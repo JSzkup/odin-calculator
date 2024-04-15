@@ -50,7 +50,7 @@ function pemdas(equation) {
 
     let i = 0;
 
-    //  TODO change functionality to update display as numbers are entered like the requirements asks for
+    //  TODO add exponents
 
     while (splitEquationArray.length > 1) {
 
