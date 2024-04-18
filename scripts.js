@@ -50,7 +50,8 @@ function pemdas(equation) {
 
     let i = 0;
 
-    //  TODO add exponents
+    // TODO add exponents
+    // TODO add decimal button
 
     while (splitEquationArray.length > 1) {
 

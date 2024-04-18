@@ -16,12 +16,68 @@ body {
 
 }
 
+
 #display {
     height: 50px;
+    /* width: 100%; */
     margin: 5px;
+
+    border: 3px solid;
 }
 
-#input-btns {
+.input-btns {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+
     flex: 1;
 
+    border: 2px solid;
+    margin: 1px;
+}
+
+.operator-btns {
+    display: flex;
+
+    /* flex-grow: 1; */
+
+    border: 2px solid;
+    margin: 3px;
+
+
+
+}
+
+.operator-btns #numpad {
+    flex: 1;
+}
+
+.number-btns {
+    display: flex;
+    flex-wrap: wrap;
+
+    justify-content: center;
+
+    border: 2px solid;
+    margin: 3px;
+
+
+}
+
+.number-btns #numpad {
+    height: 75px;
+    width: 33%;
+}
+
+.display-update-btns {
+    display: flex;
+
+    border: 2px solid;
+    margin: 3px;
+
+
+}
+
+.display-update-btns #numpad {
+    flex: 1;
 }
