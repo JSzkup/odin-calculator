@@ -33,16 +33,15 @@ body {
 
     flex: 1;
 
-    border: 2px solid;
+    /* border: 2px solid; */
     margin: 3px;
 }
 
 .operator-btns {
     display: flex;
     flex-wrap: wrap;
-    /* flex-direction: column; */
 
-    border: 2px solid;
+    /* border: 2px solid; */
     margin: 3px;
 
 
@@ -60,7 +59,7 @@ body {
 
     justify-content: center;
 
-    border: 2px solid;
+    /* border: 2px solid; */
     margin: 3px;
 }
 
@@ -75,13 +74,13 @@ body {
 
     width: 100%;
 
-    border: 2px solid;
-    margin: 3px;
+    /* border: 2px solid; */
+    margin: 3px 9px;
 }
 
 .display-update-btns #numpad {
     height: 75px;
-    width: 30%;
+    width: 50%;
 }
 
 .display-update-btns #numpad {
