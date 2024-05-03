@@ -2,10 +2,13 @@ html {
     display: flex;
     align-items: center;
     justify-content: center;
+
+    background-color: lightgray;
 }
 
 body {
-    border: 5px solid;
+    border: 5px solid black;
+    border-radius: 10px;
     margin: 5%;
 
     width: 350px;
@@ -14,14 +17,22 @@ body {
     display: flex;
     flex-direction: column;
 
+    filter: drop-shadow(15px 10px 5px darkorange);
+    background-color: darkgray;
+}
+
+button {
+    border-radius: 10px;
 }
 
 
 #display {
+    border: 3px solid;
+    border-radius: 5px;
+
     height: 100px;
     margin: 5px;
 
-    border: 3px solid;
 
     font-size: 72px;
 }
@@ -33,7 +44,6 @@ body {
 
     flex: 1;
 
-    /* border: 2px solid; */
     margin: 3px;
 }
 
@@ -43,8 +53,6 @@ body {
 
     /* border: 2px solid; */
     margin: 3px;
-
-
 
 }
 
@@ -83,8 +91,6 @@ body {
     width: 50%;
 }
 
-.display-update-btns #numpad {
-    /* flex: 1; */
-    /* height: 75px; */
-    /* width: 100%; */
+.display-update-btns .accent {
+    background-color: darkorange;
 }
